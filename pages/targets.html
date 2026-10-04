@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="author" content="مختبر الهندسة الاجتماعية">
+    <meta name="description" content="نظام محلي منظم لملفات الأهداف والمستندات والتقارير">
+    <title>ملفات الأهداف - مختبر الهندسة الاجتماعية</title>
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body data-page="targets">
+    <button type="button" id="sidebar-toggle" class="sidebar-toggle" aria-expanded="false" aria-label="فتح القائمة"><span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span></span></button>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="brand">مختبر الهندسة الاجتماعية<span>ملفات الأهداف والتقارير</span></div>
+            <nav class="sidebar-nav">
+                <a href="/pages/targets.html" data-page="targets"><i class="fa-solid fa-folder-open"></i>ملفات الأهداف</a>
+                <a href="/pages/target-new.html" data-page="new"><i class="fa-solid fa-user-plus"></i>هدف جديد</a>
+            </nav>
+            <div class="sidebar-footer">للاستخدام المحلي المنظّم فقط ضمن نطاق مصرّح.<br>التصدير: PDF / Excel / Word / CSV / HTML / TXT</div>
+        </aside>
+        <main class="main-content">
+            <div class="page-header">
+                <h1>ملفات الأهداف</h1>
+                <div class="header-actions">
+                    <div class="export-dropdown" data-entity="targets">
+                        <button type="button" class="btn btn-ghost export-toggle"><i class="fa-solid fa-file-export"></i>تصدير</button>
+                        <div class="export-menu">
+                            <button type="button" data-format="pdf">PDF</button>
+                            <button type="button" data-format="xlsx">Excel</button>
+                            <button type="button" data-format="docx">Word</button>
+                            <button type="button" data-format="csv">CSV</button>
+                            <button type="button" data-format="html">HTML</button>
+                            <button type="button" data-format="txt">TXT</button>
+                        </div>
+                    </div>
+                    <a href="/pages/target-new.html" class="btn btn-primary"><i class="fa-solid fa-plus"></i>هدف جديد</a>
+                </div>
+            </div>
+            <section class="panel filters-bar">
+                <div class="input-group"><label for="search-q">بحث</label><input type="search" id="search-q" class="input" placeholder="اسم أو هوية أو هاتف أو بريد"></div>
+                <div class="input-group"><label for="status-filter">الحالة</label><select id="status-filter" class="select"><option value="">الكل</option><option value="active">نشط</option><option value="archived">مؤرشف</option></select></div>
+                <div></div>
+            </section>
+            <section class="panel">
+                <div class="table-wrap">
+                    <table id="targets-table">
+                        <thead><tr><th>الاسم</th><th>رقم الهوية</th><th>الهاتف</th><th>البريد الالكتروني</th><th>الحالة</th><th>آخر تحديث</th><th>إجراءات</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <p class="empty-state" id="targets-empty" hidden>لا توجد ملفات بعد. أنشئ هدفًا جديدًا للبدء.</p>
+            </section>
+        </main>
+    </div>
+    <script src="/js/main.js"></script>
+    <script src="/js/targets.js"></script>
+</body>
+</html>

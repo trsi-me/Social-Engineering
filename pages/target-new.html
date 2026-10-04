@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="author" content="مختبر الهندسة الاجتماعية">
+    <meta name="description" content="إنشاء ملف هدف جديد">
+    <title>هدف جديد - مختبر الهندسة الاجتماعية</title>
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body data-page="new">
+    <button type="button" id="sidebar-toggle" class="sidebar-toggle" aria-expanded="false" aria-label="فتح القائمة"><span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span></span></button>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="brand">مختبر الهندسة الاجتماعية<span>ملفات الأهداف والتقارير</span></div>
+            <nav class="sidebar-nav">
+                <a href="/pages/targets.html" data-page="targets"><i class="fa-solid fa-folder-open"></i>ملفات الأهداف</a>
+                <a href="/pages/target-new.html" data-page="new"><i class="fa-solid fa-user-plus"></i>هدف جديد</a>
+            </nav>
+            <div class="sidebar-footer">للاستخدام المحلي المنظّم فقط ضمن نطاق مصرّح.</div>
+        </aside>
+        <main class="main-content">
+            <div class="page-header"><h1>هدف جديد</h1></div>
+            <section class="panel">
+                <form id="target-form" data-mode="create">
+                    <div class="form-grid">
+                        <div class="input-group"><label for="full_name">الاسم الكامل</label><input class="input" id="full_name" name="full_name" required maxlength="200"></div>
+                        <div class="input-group"><label for="national_id">رقم الهوية</label><input class="input" id="national_id" name="national_id" maxlength="32"></div>
+                        <div class="input-group"><label for="phone">الهاتف</label><input class="input" id="phone" name="phone" maxlength="40"></div>
+                        <div class="input-group"><label for="telecom_company">شركة الاتصالات</label><input class="input" id="telecom_company" name="telecom_company" maxlength="100" placeholder="يُستخرج تلقائياً من الرقم الكويتي إن أمكن"></div>
+                        <div class="input-group"><label for="phone_model">نوع الجوال والنظام</label><input class="input" id="phone_model" name="phone_model" maxlength="150"></div>
+                        <div class="input-group"><label for="email">البريد الالكتروني</label><input class="input" id="email" name="email" type="email" maxlength="190"></div>
+                        <div class="input-group full"><label for="address">العنوان</label><input class="input" id="address" name="address" maxlength="500"></div>
+                        <div class="input-group full"><label for="maps_url">رابط Google Maps</label><input class="input" id="maps_url" name="maps_url" maxlength="500" placeholder="https://maps.app.goo.gl/..."></div>
+                        <div class="input-group"><label for="date_of_birth">تاريخ الميلاد</label><input class="input" id="date_of_birth" name="date_of_birth" type="date"></div>
+                        <div class="input-group"><label for="nationality">الجنسية</label><input class="input" id="nationality" name="nationality" maxlength="100"></div>
+                        <div class="input-group"><label for="occupation">المهنة</label><input class="input" id="occupation" name="occupation" maxlength="150"></div>
+                        <div class="input-group"><label for="employer">جهة العمل</label><input class="input" id="employer" name="employer" maxlength="200"></div>
+                        <div class="input-group"><label for="status">الحالة</label><select class="select" id="status" name="status"><option value="active">نشط</option><option value="archived">مؤرشف</option></select></div>
+                        <div class="input-group full"><label for="summary">ملخص الملف</label><textarea class="textarea" id="summary" name="summary" maxlength="5000"></textarea></div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i>حفظ</button>
+                        <a href="/pages/targets.html" class="btn btn-ghost">إلغاء</a>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+    <script src="/js/main.js"></script>
+    <script src="/js/target-form.js"></script>
+</body>
+</html>

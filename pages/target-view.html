@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="author" content="مختبر الهندسة الاجتماعية">
+    <meta name="description" content="عرض ملف هدف كامل مع المستندات والملاحظات والتصدير">
+    <title>عرض الملف - مختبر الهندسة الاجتماعية</title>
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body data-page="targets">
+    <button type="button" id="sidebar-toggle" class="sidebar-toggle" aria-expanded="false" aria-label="فتح القائمة"><span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span></span></button>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="brand">مختبر الهندسة الاجتماعية<span>ملفات الأهداف والتقارير</span></div>
+            <nav class="sidebar-nav">
+                <a href="/pages/targets.html" data-page="targets"><i class="fa-solid fa-folder-open"></i>ملفات الأهداف</a>
+                <a href="/pages/target-new.html" data-page="new"><i class="fa-solid fa-user-plus"></i>هدف جديد</a>
+            </nav>
+            <div class="sidebar-footer">صدّر التقرير بنفس أسلوب أنظمة الإدارة: PDF والجداول.</div>
+        </aside>
+        <main class="main-content">
+            <div class="page-header target-dossier-header">
+                <div class="target-header-main">
+                    <h1 id="target-name">ملف الهدف</h1>
+                    <div class="header-actions">
+                        <span id="target-status" class="badge badge-active">نشط</span>
+                        <div class="export-dropdown" id="target-export" data-entity="targets" data-id="">
+                            <button type="button" class="btn btn-ghost export-toggle"><i class="fa-solid fa-file-export"></i>تصدير التقرير</button>
+                            <div class="export-menu">
+                                <button type="button" data-format="pdf">PDF</button>
+                                <button type="button" data-format="xlsx">Excel</button>
+                                <button type="button" data-format="docx">Word</button>
+                                <button type="button" data-format="csv">CSV</button>
+                                <button type="button" data-format="html">HTML</button>
+                                <button type="button" data-format="txt">TXT</button>
+                            </div>
+                        </div>
+                        <a id="edit-link" href="#" class="btn btn-primary"><i class="fa-solid fa-pen"></i>تعديل</a>
+                    </div>
+                </div>
+                <img id="target-photo" class="target-photo" alt="الصورة الشخصية" hidden>
+            </div>
+            <section class="panel target-hero">
+                <p id="target-summary"></p>
+            </section>
+            <div class="tabs">
+                <button type="button" class="tab-btn active" data-tab="info"><i class="fa-solid fa-id-card"></i> البيانات</button>
+                <button type="button" class="tab-btn" data-tab="docs"><i class="fa-solid fa-paperclip"></i> المستندات</button>
+                <button type="button" class="tab-btn" data-tab="notes"><i class="fa-solid fa-note-sticky"></i> الملاحظات</button>
+                <button type="button" class="tab-btn" data-tab="social"><i class="fa-solid fa-share-nodes"></i> التواصل</button>
+                <button type="button" class="tab-btn" data-tab="cards"><i class="fa-solid fa-credit-card"></i> البطاقات</button>
+                <button type="button" class="tab-btn" data-tab="timeline"><i class="fa-solid fa-timeline"></i> السجل الزمني</button>
+            </div>
+            <section class="panel tab-panel active" id="tab-info">
+                <h2 class="section-title">ملخص شامل للشخصية</h2>
+                <div id="target-meta"></div>
+            </section>
+            <section class="panel tab-panel" id="tab-docs">
+                <form id="doc-form" class="inline-form">
+                    <div class="input-group"><label for="doc_title">عنوان المستند</label><input class="input" id="doc_title" name="title" maxlength="200" required></div>
+                    <div class="input-group"><label for="doc_file">الملف</label><input class="input" id="doc_file" name="file" type="file" required></div>
+                    <div class="input-group full"><label for="doc_desc">وصف</label><input class="input" id="doc_desc" name="description" maxlength="2000"></div>
+                    <div class="full"><button type="submit" class="btn btn-primary"><i class="fa-solid fa-upload"></i>رفع مستند</button></div>
+                </form>
+                <div class="stack-list" id="docs-list"></div>
+            </section>
+            <section class="panel tab-panel" id="tab-notes">
+                <form id="note-form" class="inline-form">
+                    <div class="input-group"><label for="note_title">العنوان</label><input class="input" id="note_title" name="title" maxlength="200" required></div>
+                    <div class="input-group"><label for="note_type">النوع</label><select class="select" id="note_type" name="note_type"><option value="note">ملاحظة</option><option value="link">رابط</option><option value="investigation">تحقيق</option></select></div>
+                    <div class="input-group full"><label for="note_body">المحتوى</label><textarea class="textarea" id="note_body" name="body" maxlength="8000"></textarea></div>
+                    <div class="input-group full"><label for="note_url">رابط (اختياري)</label><input class="input" id="note_url" name="url" maxlength="500" placeholder="https://"></div>
+                    <div class="full"><button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i>إضافة</button></div>
+                </form>
+                <div class="stack-list" id="notes-list"></div>
+            </section>
+            <section class="panel tab-panel" id="tab-social">
+                <form id="social-form" class="inline-form">
+                    <div class="input-group"><label for="platform">المنصة</label><input class="input" id="platform" name="platform" maxlength="80" required placeholder="مثل X أو LinkedIn"></div>
+                    <div class="input-group"><label for="username">اسم المستخدم</label><input class="input" id="username" name="username" maxlength="150"></div>
+                    <div class="input-group full"><label for="profile_url">رابط الملف</label><input class="input" id="profile_url" name="profile_url" maxlength="500" placeholder="https://"></div>
+                    <div class="input-group full"><label for="social_notes">ملاحظات</label><input class="input" id="social_notes" name="notes" maxlength="2000"></div>
+                    <div class="full"><button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i>إضافة حساب</button></div>
+                </form>
+                <div class="stack-list" id="social-list"></div>
+            </section>
+            <section class="panel tab-panel" id="tab-cards">
+                <p class="empty-state" id="cards-hint">أدخل بيانات البطاقة بنفسك. النظام يتعرف على النوع من الرقم.</p>
+                <form id="card-form" class="inline-form">
+                    <div class="input-group"><label for="cardholder_name">اسم الحامل</label><input class="input" id="cardholder_name" name="cardholder_name" maxlength="200"></div>
+                    <div class="input-group"><label for="card_brand">النوع</label><select class="select" id="card_brand" name="brand"><option value="unknown">يُحدد تلقائياً</option><option value="visa">Visa</option><option value="mastercard">Mastercard</option><option value="mada">مدى</option><option value="amex">American Express</option><option value="discover">Discover</option><option value="unionpay">UnionPay</option><option value="other">أخرى</option></select></div>
+                    <div class="input-group full"><label for="card_number">رقم البطاقة</label><input class="input" id="card_number" name="card_number" inputmode="numeric" autocomplete="off" maxlength="23" required placeholder="XXXX XXXX XXXX XXXX"></div>
+                    <div class="input-group"><label for="card_exp">الانتهاء</label><input class="input" id="card_exp" name="exp" maxlength="7" placeholder="MM/YY"></div>
+                    <div class="input-group"><label for="card_cvv">CVV (خلف البطاقة)</label><input class="input" id="card_cvv" name="cvv" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="XXX"></div>
+                    <div class="input-group"><label for="bank_name">البنك</label><input class="input" id="bank_name" name="bank_name" maxlength="150"></div>
+                    <div class="input-group full"><label for="card_notes">ملاحظات</label><input class="input" id="card_notes" name="notes" maxlength="2000"></div>
+                    <div class="full"><button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i>إضافة بطاقة</button></div>
+                </form>
+                <div class="stack-list" id="cards-list"></div>
+            </section>
+            <section class="panel tab-panel" id="tab-timeline">
+                <form id="timeline-form" class="inline-form">
+                    <div class="input-group"><label for="event_title">عنوان الحدث</label><input class="input" id="event_title" name="title" maxlength="200" required></div>
+                    <div class="input-group"><label for="event_at">الوقت</label><input class="input" id="event_at" name="event_at" type="datetime-local" required></div>
+                    <div class="input-group full"><label for="event_desc">التفاصيل</label><textarea class="textarea" id="event_desc" name="description" maxlength="4000"></textarea></div>
+                    <div class="input-group full"><label for="event_source">المصدر</label><input class="input" id="event_source" name="source" maxlength="200"></div>
+                    <div class="full"><button type="submit" class="btn btn-primary"><i class="fa-solid fa-plus"></i>إضافة حدث</button></div>
+                </form>
+                <div class="stack-list" id="timeline-list"></div>
+            </section>
+        </main>
+    </div>
+    <script src="/js/main.js"></script>
+    <script src="/js/target-view.js"></script>
+</body>
+</html>
